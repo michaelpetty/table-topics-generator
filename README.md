@@ -8,4 +8,4 @@ a simple Node Express app to store and display questions inspired by Toastmaster
 
 ### ERD
 
-![Entity Relationship Diagram](/assets/some.jpg)
+![Entity Relationship Diagram](/assets/TableTopicsERD.png)
