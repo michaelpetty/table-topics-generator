@@ -13,15 +13,21 @@ app.get('/', (req,res) => {
 })
 
 // temp data
-const tempQuestion = {id: 1, account_id: 1, content: 'What is your favorite color? And how is that choice reflected in your life?', name: 'Jimmy'};
+const tempList = [
+  {question_id: 1, account_id: 1, content: 'What is your favorite color? And how is that choice reflected in your life?', name: 'Jimmy'},
+  {question_id: 2, account_id: 1, content: 'What is your superpower??', name: 'Jimmy'},
+  {question_id: 3, account_id: 1, content: 'What is your patronus (Harry Potter reference) or personal icon, and why??', name: 'Jimmy'},
+  {question_id: 4, account_id: 1, content: 'What is your favorite movie of all time?', name: 'Jimmy'},
+];
 
 app.get('/api/v1/questions', (req, res) => res.json({status: 200, message:'i got your questions', data: {}}));
 
 app.get('/api/v1/questions/:id', (req, res) => {
   if (req.params.id === 'random') {
-    res.json({status: 200, message: 'one random question', data: tempQuestion})
+    const randomIndex = Math.floor(Math.random() * tempList.length);
+    res.json({status: 200, message: 'one random question', data: tempList[randomIndex]})
   } else {
-    res.json({status: 200, message: `data for question id: ${req.params.id}`, data: {}})
+    res.json({status: 200, message: `data for question id: ${req.params.id}`, data: tempList[req.params.id]})
   }
 
 })

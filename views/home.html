@@ -3,19 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Table Topics Generator</title>
-    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
     <script defer src="/scripts/main.js"></script>
   </head>
   <body>
-    <header>
+    <header class="navbar-fixed">
       <nav>
         navigation
       </nav>
     </header>
-    <h1>table topics generator</h1>
-    <section class="questions">
-    </section>
-    <footer>&copy;2020 Michael Petty</footer>
+    <main class="container">
+      <h1>table topics generator</h1>
+      <section class="questions">
+        <button type="button" name="refresh" class="btn right"><i class="material-icons right">refresh</i>randomize</button>
+      </section>
+    </main>
+    <footer class="page-footer">&copy;2020 Michael Petty</footer>
   </body>
 </html>

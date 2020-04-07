@@ -5,8 +5,12 @@ const asyncFetch = async (url, method='get') => {
 }
 
 const renderQuestion = (data) => {
-  const section = document.querySelector('.questions');
-  section.insertAdjacentHTML('afterbegin', `<article class="question">${data.content}</article>`)
+  const questions = document.querySelector('.questions');
+  const boxes = questions.querySelectorAll('.questionBox');
+  if (boxes.length) {
+    boxes.forEach(box => box.remove());
+  }
+  questions.insertAdjacentHTML('afterbegin', `<article class="questionBox"><div class="question">${data.content}</article>`)
 
 }
 
@@ -19,3 +23,5 @@ const getQuestion = () => {
 }
 
 getQuestion();
+
+document.querySelector('button[name=refresh]').addEventListener('click', getQuestion);
