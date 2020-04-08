@@ -11,7 +11,6 @@ const renderQuestion = (data) => {
     boxes.forEach(box => box.remove());
   }
   questions.insertAdjacentHTML('afterbegin', `<article class="questionBox"><div class="question">${data.content}</article>`)
-
 }
 
 const getQuestion = () => {

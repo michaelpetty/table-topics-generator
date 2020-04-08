@@ -1,8 +1,9 @@
 const express = require('express');
-
-const app = express();
+require('dotenv').config();
+const db = require('./models')
 
 const PORT = process.env.PORT || 4000;
+const app = express();
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -30,6 +31,16 @@ app.get('/api/v1/questions/:id', (req, res) => {
     res.json({status: 200, message: `data for question id: ${req.params.id}`, data: tempList[req.params.id]})
   }
 
+})
+
+app.get('/api/v1/accounts', async (req, res) => {
+  try {
+  await db.Account.sync();
+  const accounts = await db.Account.findAll();
+  res.json(accounts);
+} catch (err) {
+  console.error(err);
+}
 })
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
