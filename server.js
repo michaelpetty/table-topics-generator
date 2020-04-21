@@ -19,6 +19,8 @@ const tempList = [
   {question_id: 2, account_id: 1, content: 'What is your superpower??', name: 'Jimmy'},
   {question_id: 3, account_id: 1, content: 'What is your patronus (Harry Potter reference) or personal icon, and why??', name: 'Jimmy'},
   {question_id: 4, account_id: 1, content: 'What is your favorite movie of all time?', name: 'Jimmy'},
+  {question_id: 5, account_id: 1, content: 'Tell us about your favorite pair of socks (or shirt, pants, etc). What makes them special?', name: 'Jimmy'},
+  {question_id: 6, account_id: 1, content: 'If you could go anywhere, where would it be?', name: 'Jimmy'},
 ];
 
 app.get('/api/v1/questions', (req, res) => res.json({status: 200, message:'i got your questions', data: {}}));
