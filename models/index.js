@@ -18,6 +18,24 @@ const Profile = ProfileModel(sequelize, DataTypes);
 const Question = QuestionModel(sequelize, DataTypes);
 const Topic = TopicModel(sequelize, DataTypes);
 
+Account.hasOne(Profile, {
+  foreignKey: 'account_id',
+  onDelete: 'CASCADE'
+});
+
+Profile.belongsTo(Account,{
+  foreignKey: 'account_id'
+})
+
+Profile.hasMany(Question, {
+  foreignKey: 'profile_id',
+  onDelete: 'CASCADE'
+})
+
+Question.belongsTo(Profile, {
+  foreignKey: 'profile_id'
+})
+
 module.exports = {
   sequelize,
   Account,

@@ -25,10 +25,15 @@ const tempList = [
 
 app.get('/api/v1/questions', (req, res) => res.json({status: 200, message:'i got your questions', data: {}}));
 
-app.get('/api/v1/questions/:id', (req, res) => {
+app.get('/api/v1/questions/:id', async (req, res) => {
   if (req.params.id === 'random') {
-    const randomIndex = Math.floor(Math.random() * tempList.length);
-    res.json({status: 200, message: 'one random question', data: tempList[randomIndex]})
+    try {
+      const questions = await db.Question.findAll({include: db.Profile});
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      res.json({status: 200, message: 'one random question', data: questions[randomIndex]});
+    } catch(err) {
+      console.error(err);
+    }
   } else {
     res.json({status: 200, message: `data for question id: ${req.params.id}`, data: tempList[req.params.id]})
   }

@@ -16,6 +16,7 @@ const renderQuestion = (data) => {
 const getQuestion = () => {
   asyncFetch('/api/v1/questions/random')
     .then(res => {
+      console.log(res.data)
       renderQuestion(res.data);
     })
     .catch(err =>  console.log(err));
